@@ -1,0 +1,311 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* === DARK (default) — applied via :root so dark is the baseline === */
+  :root,
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 217 33% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 11%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 217 33% 12%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 14%;
+    --input: 217 33% 14%;
+    --ring: 215 20% 75%;
+    --radius: 0.75rem;
+
+    /* Premium accent palette */
+    --accent-blue: 217 91% 60%;
+    --accent-cyan: 189 94% 55%;
+    --accent-emerald: 152 76% 50%;
+    --accent-violet: 265 89% 68%;
+    --accent-amber: 38 92% 58%;
+
+    --chart-1: 217 91% 60%;
+    --chart-2: 152 76% 50%;
+    --chart-3: 189 94% 55%;
+    --chart-4: 265 89% 68%;
+    --chart-5: 38 92% 58%;
+
+    /* Theme-aware surface tokens */
+    --surface-1: 222 47% 5%;
+    --surface-2: 222 47% 6%;
+    --surface-glass: 222 47% 5%;
+    --white-ratio: 1%;
+    --grid-opacity: 0.04;
+    --dots-opacity: 0.07;
+    --shadow-color: 222 47% 0%;
+    --highlight-blue: 217 91% 60%;
+    --highlight-emerald: 152 76% 50%;
+  }
+
+  /* === LIGHT === */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 8%;
+    --primary: 222 47% 10%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222 47% 8%;
+    --muted: 210 40% 93%;
+    --muted-foreground: 215 20% 42%;
+    --accent: 210 40% 93%;
+    --accent-foreground: 222 47% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 222 47% 20%;
+
+    /* Accent palette — slightly deeper for light mode readability */
+    --accent-blue: 217 91% 48%;
+    --accent-cyan: 189 80% 38%;
+    --accent-emerald: 152 60% 36%;
+    --accent-violet: 265 75% 52%;
+    --accent-amber: 32 90% 42%;
+
+    --chart-1: 217 91% 48%;
+    --chart-2: 152 60% 36%;
+    --chart-3: 189 80% 38%;
+    --chart-4: 265 75% 52%;
+    --chart-5: 32 90% 42%;
+
+    --surface-1: 210 40% 98%;
+    --surface-2: 210 40% 96%;
+    --surface-glass: 0 0% 100%;
+    --white-ratio: 100%;
+    --grid-opacity: 0.05;
+    --dots-opacity: 0.1;
+    --shadow-color: 222 47% 20%;
+    --highlight-blue: 217 91% 48%;
+    --highlight-emerald: 152 60% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variation-settings: 'opsz' 32;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  p {
+    letter-spacing: -0.005em;
+  }
+  ::selection {
+    background: hsl(var(--accent-blue) / 0.25);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Premium gradient text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--accent-blue)) 0%,
+      hsl(var(--accent-cyan)) 50%,
+      hsl(var(--accent-emerald)) 100%
+    );
+  }
+
+  .text-gradient-muted {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--muted-foreground)) 100%
+    );
+  }
+
+  .text-gradient-heading {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--muted-foreground)) 100%
+    );
+  }
+
+  /* Elegant serif heading gradient */
+  .text-serif-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--accent-blue)) 0%,
+      hsl(var(--accent-violet)) 100%
+    );
+  }
+
+  /* Glassmorphism — theme-aware */
+  .glass {
+    background: hsl(var(--surface-glass) / 0.6);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid hsl(var(--foreground) / 0.08);
+  }
+
+  .glass-strong {
+    background: hsl(var(--surface-glass) / 0.8);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid hsl(var(--foreground) / 0.1);
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground) / 0.04) 0%,
+      hsl(var(--foreground) / 0.01) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--foreground) / 0.06);
+  }
+
+  /* Premium border glow */
+  .border-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(hsl(var(--surface-2)), hsl(var(--surface-2))) padding-box,
+      linear-gradient(
+        135deg,
+        hsl(var(--accent-blue) / 0.4),
+        hsl(var(--accent-cyan) / 0.1),
+        hsl(var(--accent-emerald) / 0.4)
+      )
+        border-box;
+  }
+
+  /* Grid + dots backgrounds — theme-aware */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / var(--grid-opacity)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / var(--grid-opacity)) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / var(--dots-opacity)) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  /* Glow shadows */
+  .shadow-glow-blue {
+    box-shadow:
+      0 0 0 1px hsl(var(--accent-blue) / 0.1),
+      0 8px 40px -8px hsl(var(--accent-blue) / 0.3);
+  }
+  .shadow-glow-emerald {
+    box-shadow:
+      0 0 0 1px hsl(var(--accent-emerald) / 0.1),
+      0 8px 40px -8px hsl(var(--accent-emerald) / 0.3);
+  }
+
+  .shadow-premium {
+    box-shadow:
+      0 0 0 1px hsl(var(--foreground) / 0.04),
+      0 2px 8px -2px hsl(var(--shadow-color) / 0.3),
+      0 12px 32px -8px hsl(var(--shadow-color) / 0.4);
+  }
+
+  .shadow-elevated {
+    box-shadow:
+      0 0 0 1px hsl(var(--foreground) / 0.05),
+      0 4px 12px -4px hsl(var(--shadow-color) / 0.3),
+      0 24px 48px -12px hsl(var(--shadow-color) / 0.5);
+  }
+
+  /* Noise texture overlay */
+  .noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Smooth scrollbar */
+  .scrollbar-premium::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-premium::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-premium::-webkit-scrollbar-thumb {
+    background: hsl(var(--foreground) / 0.1);
+    border-radius: 4px;
+  }
+  .scrollbar-premium::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground) / 0.2);
+  }
+
+  /* Theme transition utility */
+  .theme-transition * {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease;
+  }
+}
+
+/* Global scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground) / 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / 0.2);
+}
