@@ -38,3 +38,15 @@ next-env.d.ts
 # bolt
 .bolt/
 .bolt
+
+# IDEs
+.vscode/
+.idea/
+
+# Netlify
+.netlify/
+
+# Caches and logs
+.eslintcache
+*.log
+
