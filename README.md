@@ -5,7 +5,7 @@ A state-of-the-art, cinematic developer portfolio designed with modern glassmorp
 ---
 
 ## 🚀 Live Demo
-Visit the live portfolio: [prashantsingh30.github.io/Prashant_Portfolio](https://github.com/prashantsingh30/Prashant_Portfolio) (or configured Netlify/Vercel link)
+Visit the live portfolio: [theprashantsingh.vercel.app](https://theprashantsingh.vercel.app/)
 
 ---
 
